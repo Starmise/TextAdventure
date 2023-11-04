@@ -135,6 +135,7 @@
   <ItemGroup>
     <ClInclude Include="include\Commons.h" />
     <ClInclude Include="include\Enemy.h" />
+    <ClInclude Include="include\EnemyFactory.h" />
     <ClInclude Include="include\Player.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
