@@ -35,7 +35,7 @@
     <ClInclude Include="include\Player.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="include\EnemyFactory.h">
+    <ClInclude Include="include\FactoryEnemy.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>

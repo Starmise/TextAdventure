@@ -9,25 +9,28 @@ public:
 	Enemy(string _name, int _health) : m_name(_name), m_health(_health) {};
 	~Enemy() = default;
 
-	void 
-		attack(Player*& _p);
+	virtual 
+		void 
+		attack(Player*& _p) = 0;
+
+	virtual 
+		int 
+		getHealth() = 0;
+
+	virtual 
+		string 
+		getName() = 0;
+
+	virtual 
+		int 
+		getDamage() = 0;
 
 	void 
 		setHealth(int _h) {
 		m_health += _h;
 	}
 
-	int 
-		getHealth() {
-		return m_health;
-	}
-
-	string 
-		getName() {
-		return m_name;
-	}
-
 private:
-	int m_health = 100;
+	int m_health;
 	string m_name = "";
 };
