@@ -14,7 +14,7 @@ public:
 
 	void 
 		setHealth(int _h) {
-		m_health += _h;
+		m_health -= _h;
 	}
 
 	string 

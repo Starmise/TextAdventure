@@ -25,9 +25,6 @@ public:
       _p->setHealth(-m_damage);
       cout << "El " << m_name << " ataca a " << _p->getName() << " y le resta " << damage << endl;
     }
-    else {
-      cout << "No hay nada a que atacar" << endl;
-    }
   }
 
   int 
@@ -44,23 +41,14 @@ public:
     getDamage() override {
     return m_damage;
   }
-};
 
-class ConcreteEnemyFactorySpider : public FactoryEnemy {
-public:
-  Enemy* createEnemy(const string& name, const int& health, const int& damage) override {
-    return new ConcreteEnemy(name, health, damage);
+  void
+    setHealth(int _h) override {
+    m_health += _h;
   }
 };
 
-class ConcreteEnemyFactorySqueleton : public FactoryEnemy {
-public:
-  Enemy* createEnemy(const string& name, const int& health, const int& damage) override {
-    return new ConcreteEnemy(name, health, damage);
-  }
-};
-
-class ConcreteEnemyFactoryShadow : public FactoryEnemy {
+class ConcreteEnemyFactory : public FactoryEnemy {
 public:
   Enemy* createEnemy(const string& name, const int& health, const int& damage) override {
     return new ConcreteEnemy(name, health, damage);

@@ -131,12 +131,15 @@
     <ClCompile Include="src\Enemy.cpp" />
     <ClCompile Include="src\Main.cpp" />
     <ClCompile Include="src\Player.cpp" />
+    <ClCompile Include="src\Rooms.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Commons.h" />
     <ClInclude Include="include\Enemy.h" />
     <ClInclude Include="include\FactoryEnemy.h" />
+    <ClInclude Include="include\Movement.h" />
     <ClInclude Include="include\Player.h" />
+    <ClInclude Include="include\Rooms.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

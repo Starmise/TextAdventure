@@ -1,12 +1,12 @@
 #include "Player.h"
 #include "Enemy.h"
 
-void Player::attack(Enemy*& _e)
-{
+void 
+Player::attack(Enemy*& _e) {
   if (_e != nullptr)
   {
-    int damage = 20;
-    _e->setHealth(-damage);
+    int damage = -20;
+    _e->setHealth(damage);
     cout << m_name << " ataca a " << _e->getName() << " y le resta " << damage << endl;
   }
   else {
@@ -15,8 +15,8 @@ void Player::attack(Enemy*& _e)
   }
 }
 
-void Player::combat(Enemy* e_adversary)
-{
+void 
+Player::combat(Enemy* e_adversary) {
     cout << "Delante de ti ves a un " << e_adversary->getName() << endl;
 
   while (m_health > 0 && e_adversary->getHealth() > 0) {

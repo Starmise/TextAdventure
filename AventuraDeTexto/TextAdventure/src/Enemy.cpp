@@ -1,8 +1,8 @@
 #include "Enemy.h"
 #include "Player.h"
 
-void Enemy::attack(Player*& _p)
-{
+void 
+Enemy::attack(Player*& _p) {
   if (_p != nullptr)
   {
     int damage = 20;

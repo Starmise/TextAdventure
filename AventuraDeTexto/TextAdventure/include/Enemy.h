@@ -25,10 +25,11 @@ public:
 		int 
 		getDamage() = 0;
 
-	void 
-		setHealth(int _h) {
-		m_health += _h;
-	}
+	virtual
+		void 
+			setHealth(int _h) {
+			m_health += _h;
+		}
 
 private:
 	int m_health;
