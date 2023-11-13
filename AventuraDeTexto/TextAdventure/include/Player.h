@@ -1,6 +1,6 @@
 #pragma once
 #include "Commons.h"
-#include <cstdlib>  
+#include "Items.h"
 class Enemy;
 
 class Player
@@ -29,8 +29,18 @@ public:
 	void 
 		combat(Enemy* e_adversary);
 
+	void 
+		pickUpItem(const Items& obj);
+
+	bool 
+		hasItem(const string& objName) const;
+
+	void 
+		consumePotion();
+
 private:
 	int m_health = 100;
 	string m_name = "";
+	vector<Items> m_inventory;
 };
 

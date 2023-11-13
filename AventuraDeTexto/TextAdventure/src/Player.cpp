@@ -32,6 +32,9 @@ Player::combat(Enemy* e_adversary) {
       
     }
     else if (choice == 2 ) {
+      consumePotion();
+    }
+    else if (choice == 3) {
       break;
     }
 
@@ -48,7 +51,36 @@ Player::combat(Enemy* e_adversary) {
   }
 }
 
-int Player::getHealth()
-{
+int 
+Player::getHealth() {
   return m_health;
+}
+
+void 
+Player::pickUpItem(const Items& obj) {
+  m_inventory.push_back(obj);
+}
+
+bool 
+Player::hasItem(const string& objName) const {
+  for (const auto& obj : m_inventory) {
+    if (obj.getName() == objName) {
+      return true;
+    }
+  }
+  return false;
+}
+
+void 
+Player::consumePotion() {
+  for (auto i = m_inventory.begin(); i != m_inventory.end(); ++i) {
+    if (i->getName() == "Poción") {
+      m_health += i->getValue();
+
+      m_inventory.erase(i);
+
+      cout << "Has consumido una poción. Tu salud ha aumentado." << endl;
+    }
+  }
+  cout << "No tienes ninguna poción en tu inventario." << endl;
 }

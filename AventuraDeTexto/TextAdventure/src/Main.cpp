@@ -5,6 +5,7 @@
 #include "Rooms.h"
 #include "Movement.h"
 
+//Declaration of functions for each room
 void FirstRoom(Player* player);
 void SecondRoom(Player* player, Enemy* enemy);
 void ThirdRoom(Player* player);
@@ -14,28 +15,36 @@ void SixthRoomA(Player* player, Enemy* enemy);
 void SixthRoomB(Player* player, Enemy* enemy);
 void SeventhRoom(Player* player, Enemy* enemy);
 void EighthRoomA(Player* player, Enemy* enemy);
-void EighthRoomB(Player* player, Enemy* enemy);
+void EighthRoomB(Player* player, Enemy* enemy); //For an alternative route
 void NinethRoomA(Player* player);
-void NinethRoomB(Player* player);
+void NinethRoomB(Player* player); //For an alternative route
 void FinalRoom(Player* player, Enemy* enemy);
 
+//Parameter player pointer to the player object.
 string pName;
 Player* Finn = new Player(pName, 150);
 
+//Concrete factory for creating different types of enemies.
 ConcreteEnemyFactory enemySpider;
 ConcreteEnemyFactory enemySquelet;
 ConcreteEnemyFactory enemyShadow;
 ConcreteEnemyFactory enemyGnome;
 
+//Represents an enemy object for each factory created before.
 Enemy* Spider = enemySpider.createEnemy("ArañaGigante", 100, 20);
 Enemy* Gnome = enemyGnome.createEnemy("Gnomo", 40, 5);
 Enemy* Squelet = enemySquelet.createEnemy("Esqueleto", 75, 15);
 Enemy* Shadow = enemyShadow.createEnemy("Sombra", 150, 35);
 
+//Create different objects from the class Items
+Items potion("Poción", 50);
+Items eyeOfSpider("Ojo de Araña", 1);
+
 int main() {
   cout << "Hola ¿cual es tu nombre aventurero?" << endl;
   cin >> pName;
 
+  //Start the game with the first room which leads to the other rooms
   FirstRoom(Finn);
   
   delete Finn;
@@ -45,10 +54,12 @@ int main() {
 
 void 
 FirstRoom(Player* player) {
+  //Create a object for the correspondant room
   Room room1("Cuarto inicio", "Despiertas en una habitacion iluminada unicamente por un pequeño rayo de luz proveniente de una ventana que no permite ver hacia el exterior. Enfrente de ti solo hay una puerta con una nota.");
   cout << "Cuarto 1: " << room1.getName() << endl;
   cout << room1.getDescription() << endl;
 
+  //Logic for the movement
   Movement movement(true, false, false, false);
   movement.MovingChoice();
   if (movement.getChoice() == 1) {
@@ -78,6 +89,7 @@ ThirdRoom(Player* player) {
   Room room3("Cuarto 3", "En el cuarto no ves casi nada, solo te guias con la pequeña luz proveniente de una botella de cristal con un contenido que emana luz azul. Avanzas hasta toparte con una puerta");
   cout << "\nCuarto 3: " << room3.getName() << endl;
   cout << room3.getDescription() << endl;
+  Finn->pickUpItem(potion);
 
   Movement movement(false, true, false, false);
   movement.MovingChoice();
@@ -128,9 +140,10 @@ FifthRoom(Player* player, Enemy* enemy) {
 
 void 
 SixthRoomA(Player* player, Enemy* enemy) {
-  Room room6("Cuarto 6", "Dentro del cuarto avistas a un esqueleto vivo con espada esperando para atacarte, el esqueleto parece tener una llave dentro de su torax" "Al vencer al enemigo ves dos puertas más además de la que acabas de cruzar, una enfrente de ti, y una al lado contrario del que entraste");
+  Room room6("Cuarto 6", "Dentro del cuarto avistas a un esqueleto vivo con espada esperando para atacarte, el esqueleto parece tener una poción dentro de su torax" "Al vencer al enemigo ves dos puertas más además de la que acabas de cruzar, una enfrente de ti, y una al lado contrario del que entraste");
   cout << "\nCuarto 6: " << room6.getName() << endl;
   cout << room6.getDescription() << endl;
+  Finn->pickUpItem(potion);
 
   delete enemy;
   enemy = enemySquelet.createEnemy("Esqueleto", 75, 15);
@@ -145,9 +158,10 @@ SixthRoomA(Player* player, Enemy* enemy) {
 
 void
 SixthRoomB(Player* player, Enemy* enemy) {
-  Room room6("Cuarto 6", "Dentro del cuarto avistas a un esqueleto vivo con espada esperando para atacarte, el esqueleto parece tener una llave dentro de su torax");
+  Room room6("Cuarto 6", "Dentro del cuarto avistas a un esqueleto vivo con espada esperando para atacarte, el esqueleto parece tener una poción dentro de su torax");
   cout << "\nCuarto 6: " << room6.getName() << endl;
   cout << room6.getDescription() << endl;
+  Finn->pickUpItem(potion);
 
   delete enemy;
   enemy = enemySquelet.createEnemy("Esqueleto", 75, 15);
@@ -166,6 +180,7 @@ SeventhRoom(Player* player, Enemy* enemy) {
   Room room7("Cuarto 7", "En el cuarto ves a un pequeño duende que te impide pasar");
   cout << "\nCuarto 7: " << room7.getName() << endl;
   cout << room7.getDescription() << endl;
+  Finn->pickUpItem(potion);
 
   delete enemy;
   enemy = enemyGnome.createEnemy("Gnomo", 40, 5);
@@ -187,6 +202,7 @@ EighthRoomA(Player* player, Enemy* enemy) {
   delete enemy;
   enemy = enemySpider.createEnemy("ArañaGigante", 100, 20);
   player->combat(enemy);
+  Finn->pickUpItem(eyeOfSpider);
 
   Movement movement(true, false, false, false);
   movement.MovingChoice();
@@ -203,6 +219,8 @@ EighthRoomB(Player* player, Enemy* enemy) {
   delete enemy;
   enemy = enemySpider.createEnemy("ArañaGigante", 100, 20);
   player->combat(enemy);
+  Finn->pickUpItem(eyeOfSpider);
+  Finn->pickUpItem(potion);
 
   Movement movement(true, false, false, false);
   movement.MovingChoice();
@@ -216,12 +234,18 @@ NinethRoomA(Player* player) {
   Room room9("Cuarto 9", "A diferencia del cuarto anterior, puedes notar que esté se ve adornado de forma muy elegante, las peredes tienen adornos de oro y enfrente te ti hay una estatua de un león dorado con dos huecos en los ojos. Lo unico que se te ocurre es colorar el ojo de la araña que acabas de matar, pero solo tienes uno");
   cout << "\nCuarto 9: " << room9.getName() << endl;
   cout << room9.getDescription() << endl;
-  cout << "Decides regresar al cuarto anterior en busca de otra araña" << endl;
 
-  Movement movement(false, false, false, true);
-  movement.MovingChoice();
-  if (movement.getChoice() == 4) {
-    EighthRoomB(Finn, Spider);
+  if (player->hasItem("Ojo de Araña") && player->hasItem("Ojo de Araña")) {
+    cout << "No se supone que tengas eso aun" << endl;
+  }
+  else 
+  {
+    cout << "Decides regresar al cuarto anterior en busca de otra araña" << endl;
+    Movement movement(false, false, false, true);
+    movement.MovingChoice();
+    if (movement.getChoice() == 4) {
+      EighthRoomB(Finn, Spider);
+    }
   }
 }
 
@@ -245,6 +269,6 @@ FinalRoom(Player* player, Enemy* enemy) {
   cout << roomF.getDescription() << endl;
   player->combat(enemy);
   cout << "Al subir las escaleras, un fuerte destello de luz te ciega y al abrir los";
-    "ojos, te das cuenta de que todo fue un sueño.";
+    " ojos, te das cuenta de que todo fue un sueño.\n";
     cout << "Gracias " << pName << " por jugar esta aventura.";
 }
