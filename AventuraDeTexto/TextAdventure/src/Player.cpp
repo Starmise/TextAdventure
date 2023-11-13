@@ -21,7 +21,7 @@ Player::combat(Enemy* e_adversary) {
 
   while (m_health > 0 && e_adversary->getHealth() > 0) {
     int choice;
-    cout << "¿Qué quieres hacer? (1 para atacar, 2 para salir): ";
+    cout << "¿Qué quieres hacer? (1 para atacar, 2 para utilizar un objeto): ";
     cin >> choice;
 
     if (choice == 1) {
