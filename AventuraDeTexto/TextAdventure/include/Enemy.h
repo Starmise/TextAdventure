@@ -11,7 +11,7 @@ public:
 
 	virtual 
 		void 
-		attack(Player*& _p) = 0;
+		attack(Player* _p) = 0;
 
 	virtual 
 		int 

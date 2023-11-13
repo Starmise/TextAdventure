@@ -18,12 +18,11 @@ public:
     m_name(name), m_health(health), m_damage(damage) {}
 
   void 
-    attack(Player*& _p) override {
+    attack(Player* _p) override {
     if (_p != nullptr) {
-      int damage = -20;
-      _p->setHealth(damage);
-      _p->setHealth(-m_damage);
-      cout << "El " << m_name << " ataca a " << _p->getName() << " y le resta " << damage << endl;
+      int damage = 20;
+      _p->setHealth(m_damage);
+      cout << "El " << m_name << " te ataca" << " y resta " << damage << endl;
     }
   }
 

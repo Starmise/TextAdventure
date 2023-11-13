@@ -26,6 +26,10 @@ Player::combat(Enemy* e_adversary) {
 
     if (choice == 1) {
       attack(e_adversary);
+      if (e_adversary->getHealth() > 0){
+        e_adversary->attack(this);
+      }
+      
     }
     else if (choice == 2 ) {
       break;
@@ -35,9 +39,16 @@ Player::combat(Enemy* e_adversary) {
   }
 
   if (m_health <= 0) {
-    cout << "Has perdido la batalla." << endl;
+    cout << "\nHas perdido la batalla. Tu aventura termina aqui" << endl;
+    exit(0);
   }
   else {
-    cout << "Has ganado la batalla." << endl;
+    cout << "Has ganado la batalla y has obtenido energia del enemigo vencido" << endl;
+    m_health += 30;
   }
+}
+
+int Player::getHealth()
+{
+  return m_health;
 }

@@ -11,7 +11,7 @@ Movement::~Movement()
 
 void 
 Movement::MovingChoice() {
-  cout << "Hacia dónde te quieres mover? " << endl;
+  cout << "Hacia donde te quieres mover? " << endl;
   cout << "1.Arriba\n";
   cout << "2.Izquierda\n";
   cout << "3.Derecha\n";
@@ -37,7 +37,7 @@ Movement::MovingChoice() {
     break;
 
   default:
-    cout << "Esa no es una opción\n" << endl;
+    cout << "Esa no es una opcion\n" << endl;
     break;
   }
 }

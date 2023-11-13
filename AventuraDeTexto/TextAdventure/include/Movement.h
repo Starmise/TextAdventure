@@ -23,10 +23,8 @@ public:
 	void 
 		MovingChoice();
 
-	int 
-		getChoice() {
-		return m_choice;
-	}
+	int
+		getChoice();
 
 private:
 	bool m_moveUp;

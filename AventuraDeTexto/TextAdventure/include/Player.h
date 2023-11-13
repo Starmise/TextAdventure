@@ -1,5 +1,6 @@
 #pragma once
 #include "Commons.h"
+#include <cstdlib>  
 class Enemy;
 
 class Player
@@ -16,6 +17,9 @@ public:
 		setHealth(int _h) {
 		m_health -= _h;
 	}
+
+	int
+		getHealth();
 
 	string 
 		getName() {
