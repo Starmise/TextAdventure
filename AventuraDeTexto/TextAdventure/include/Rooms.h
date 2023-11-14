@@ -6,10 +6,12 @@
 
 class Room {
 public:
+  //This class is just for the name and description for each room
   Room(const string& name, const string& description);
 
-  void 
-    addEnemy(Enemy* enemy);
+  /*This function was not necessary
+  void
+    addEnemy(Enemy* enemy);*/
 
   string 
     getDescription() const;

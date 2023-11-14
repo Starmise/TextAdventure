@@ -43,6 +43,7 @@ Items eyeOfSpider("Ojo de Araña", 1);
 int main() {
   cout << "Hola ¿cual es tu nombre aventurero?" << endl;
   cin >> pName;
+  Finn->setName(pName);
 
   //Start the game with the first room which leads to the other rooms
   FirstRoom(Finn);

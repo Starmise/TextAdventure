@@ -5,6 +5,7 @@
 class Movement
 {
 public:
+	//A bool for each posibility of movement between rooms
 	Movement(bool _moveUp, bool _moveLeft, bool _moveRight, bool _moveDown);
 	~Movement();
 
@@ -20,9 +21,11 @@ public:
 	void
 		MovingDown();
 
+	//This function is for the player to select the direction for the next room
 	void 
 		MovingChoice();
 
+	//Because I needed to use the variable later, I created a getChoice
 	int
 		getChoice();
 

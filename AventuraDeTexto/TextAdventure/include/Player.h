@@ -27,6 +27,9 @@ public:
 	}
 
 	void 
+		setName(string name);
+
+	void 
 		combat(Enemy* e_adversary);
 
 	void 
