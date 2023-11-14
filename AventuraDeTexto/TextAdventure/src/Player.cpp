@@ -49,7 +49,7 @@ Player::combat(Enemy* e_adversary) {
     exit(0);
   } //The game continues if the player defeated the enemy
   else {
-    cout << "Has ganado la batalla y has obtenido energia del enemigo vencido" << endl;
+    cout << "\nHas ganado la batalla y has obtenido energia del enemigo vencido" << endl;
     m_health += 30;
   }
 }
@@ -61,6 +61,7 @@ Player::getHealth() {
 
 void  //The player can add new objects in an inventory
 Player::pickUpItem(const Items& obj) {
+  cout << "Has encontrado un: " << obj.getName()<< endl;
   m_inventory.push_back(obj);
 }
 
